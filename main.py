@@ -4,7 +4,7 @@ from flask_cors import CORS
 from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
 from scrapewecima import wecimascraper, wecimatitle, wecimaimage
-from selenium1 import egydead_download
+from egydead import egydead_download
 
 app = Flask(__name__)
 CORS(app)
