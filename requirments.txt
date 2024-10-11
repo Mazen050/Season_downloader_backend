@@ -1,0 +1,6 @@
+Flask
+requests_html
+gunicorn
+bs4
+requests
+asyncio
