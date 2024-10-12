@@ -4,3 +4,4 @@ gunicorn
 bs4
 requests
 asyncio
+flask_cors
