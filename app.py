@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
-#from scrapewecima import wecimascraper, wecimatitle, wecimaimage
+from scrapewecima import wecimascraper, wecimatitle, wecimaimage
 from egydead import egydead_download
 
 app = Flask(__name__)
@@ -19,8 +19,8 @@ def index():
        if "ak.sv" in link:
            akwam = ak()
            data = akwam.getDLL(link)
-       # elif "wecima" in link:
-       #     data = wecimascraper(link)
+       elif "wecima" in link:
+            data = wecimascraper(link)
        elif "egyrbyeteuh" or "egydead" in link:
            data = egydead_download(link)
        return jsonify(data)
@@ -35,8 +35,8 @@ def search():
         #if "ak.sv" in text:
         akwam = ak()
         data = akwam.akwamsearch(text)
-        #elif "wecima" in text:
-        #    data = wecimasearch(text)
+        elif "wecima" in text:
+            data = wecimasearch(text)
         print(data)
         return jsonify(data)
     return 'Hello from Flask!'
