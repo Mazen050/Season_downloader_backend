@@ -38,7 +38,7 @@ def search():
 
 
 @app.route('/search/wecima',methods=['GET','POST'])
-def search():
+def searchwecima():
     if request.method == 'POST':
         data = request.get_json()
         text = data.get('text')
