@@ -32,9 +32,9 @@ def search():
         data = request.get_json()
         text = data.get('text')
         print(text)
-        #if "ak.sv" in text:
-        akwam = ak()
-        data = akwam.akwamsearch(text)
+        if "ak.sv" in text:
+            akwam = ak()
+            data = akwam.akwamsearch(text)
         elif "wecima" in text:
             data = wecimasearch(text)
         print(data)
