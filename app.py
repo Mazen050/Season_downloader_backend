@@ -31,11 +31,12 @@ def search():
     if request.method == 'POST':
         data = request.get_json()
         text = data.get('text')
+        type = data.get('Type')
         print(text)
-        if "ak.sv" in text:
+        if type=="akwam":
             akwam = ak()
             data = akwam.akwamsearch(text)
-        elif "wecima" in text:
+        elif type=="wecima":
             data = wecimasearch(text)
         print(data)
         return jsonify(data)
