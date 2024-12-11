@@ -26,19 +26,19 @@ def index():
        return jsonify(data)
    return 'Hello from Flask!'
 
-@app.route('/search',methods=['GET','POST'])
-def search():
+@app.route('/search/wecima',methods=['GET','POST'])
+def searchwecima():
     if request.method == 'POST':
         data = request.get_json()
         link = data.get('link')
-        data = wecimaseasons(text)
+        data = wecimaseasons(link)
         print(data)
         return jsonify(data)
     return 'Hello from Flask!'
 
 
-@app.route('/search/wecima',methods=['GET','POST'])
-def searchwecima():
+@app.route('/search',methods=['GET','POST'])
+def search():
     if request.method == 'POST':
         data = request.get_json()
         text = data.get('text')
