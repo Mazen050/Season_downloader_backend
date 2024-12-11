@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
-from scrapewecima import wecimascraper, wecimatitle, wecimaimage, wecimasearch
+from scrapewecima import wecimascraper, wecimatitle, wecimaimage, wecimasearch, wecimaseasons
 from egydead import egydead_download
 
 app = Flask(__name__)
@@ -27,6 +27,17 @@ def index():
    return 'Hello from Flask!'
 
 @app.route('/search',methods=['GET','POST'])
+def search():
+    if request.method == 'POST':
+        data = request.get_json()
+        link = data.get('link')
+        data = wecimaseasons(text)
+        print(data)
+        return jsonify(data)
+    return 'Hello from Flask!'
+
+
+@app.route('/search/wecima',methods=['GET','POST'])
 def search():
     if request.method == 'POST':
         data = request.get_json()
