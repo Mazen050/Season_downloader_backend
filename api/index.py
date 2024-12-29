@@ -1,10 +1,10 @@
 from types import MethodType
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from asyncakwam import akwamscrape as ak
+# from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
 from scrapewecima import wecimascraper, wecimatitle, wecimaimage, wecimasearch, wecimaseasons
-from egydead import egydead_download
+# from egydead import egydead_download
 
 app = Flask(__name__)
 CORS(app)
@@ -16,14 +16,14 @@ def index():
        Type = data.get('Type')
        link = data.get('link')
        print(link)
-       if "ak.sv" in link:
-           akwam = ak()
-           data = akwam.getDLL(link)
-       elif "wecima" in link:
+       # if "ak.sv" in link:
+       #     akwam = ak()
+       #     data = akwam.getDLL(link)
+       if "wecima" in link:
             data = wecimascraper(link)
-       elif "egyrbyeteuh" or "egydead" in link:
-           data = egydead_download(link)
-       return jsonify(data)
+       # elif "egyrbyeteuh" or "egydead" in link:
+       #     data = egydead_download(link)
+       # return jsonify(data)
    return 'Hello from Flask!'
 
 @app.route('/search/wecima',methods=['GET','POST'])
@@ -44,10 +44,10 @@ def search():
         text = data.get('text')
         type = data.get('Type')
         print(text)
-        if type=="akwam":
-            akwam = ak()
-            data = akwam.akwamsearch(text)
-        elif type=="wecima":
+        # if type=="akwam":
+        #     akwam = ak()
+        #     data = akwam.akwamsearch(text)
+        if type=="wecima":
             data = wecimasearch(text)
         print(data)
         return jsonify(data)
