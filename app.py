@@ -4,7 +4,7 @@ from flask_cors import CORS
 from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
 from scrapewecima import wecimascraper, wecimatitle, wecimaimage, wecimasearch, wecimaseasons
-from egydead import egydead_download
+# from egydead import egydead_download
 
 app = Flask(__name__)
 CORS(app)
@@ -21,8 +21,8 @@ def index():
            data = akwam.getDLL(link)
        elif "wecima" in link:
             data = wecimascraper(link)
-       elif "egyrbyeteuh" or "egydead" in link:
-           data = egydead_download(link)
+       # elif "egyrbyeteuh" or "egydead" in link:
+       #     data = egydead_download(link)
        return jsonify(data)
    return 'Hello from Flask!'
 
