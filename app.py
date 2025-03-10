@@ -19,7 +19,8 @@ def index():
        if "ak.sv" in link:
            akwam = ak()
            data = akwam.getDLL(link)
-       elif "wecima" in link:
+       # elif "wecima" in link:
+       else:
             data = wecimascraper(link)
        # elif "egyrbyeteuh" or "egydead" in link:
        #     data = egydead_download(link)
