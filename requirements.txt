@@ -6,3 +6,4 @@ requests
 asyncio
 flask_cors
 lxml_html_clean
+aiohttp
