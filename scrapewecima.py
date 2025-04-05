@@ -91,11 +91,12 @@ def wecimaseasons(link):
     r = requests.get(link)
     soup = BeautifulSoup(r.content,"html.parser")
     x = soup.find("div",class_="List--Seasons--Episodes")
+    combo = []
     try:
         seasons = x.find_all("a")
     except:
-        return "no seasons"
-    combo = []
+        combo.append(["Season 1",link])
+        return combo
     for season in seasons:
         title = season.text
         href = season.get("href")
