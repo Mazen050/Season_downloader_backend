@@ -3,7 +3,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
-from scrapewecima import wecimascraper, wecimatitle, wecimaimage, wecimasearch, wecimaseasons
+from scrapewecima import wecimatitle, wecimaimage, wecimasearch, wecimaseasons
+from fasterwecima import wecimascraper
 # from egydead import egydead_download
 
 app = Flask(__name__)
