@@ -13,7 +13,7 @@ async def episode(link):
                 downloads = downloadList.find_all("a",class_="hoverable activable")
                 for download in downloads:
                     if "720p" in download.find("resolution").text:
-                        return download.get("href")
+                        return [download.get("href"),soup.find("h1").text]
                 return "No 720p quality found"
         except Exception as e:
             print(e)
