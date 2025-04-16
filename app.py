@@ -5,7 +5,7 @@ from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
 from scrapewecima import wecimatitle, wecimaimage, wecimasearch, wecimaseasons
 from fasterwecima import wecimascraper
-from arabseed_async import arabseed_download
+from arabseed_async import arabseed_download, searcharab
 # from egydead import egydead_download
 
 app = Flask(__name__)
