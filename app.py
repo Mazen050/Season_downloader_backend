@@ -5,6 +5,7 @@ from asyncakwam import akwamscrape as ak
 #import asyncplaywright as egy
 from scrapewecima import wecimatitle, wecimaimage, wecimasearch, wecimaseasons
 from fasterwecima import wecimascraper
+from arabseed_async import arabseed_download
 # from egydead import egydead_download
 
 app = Flask(__name__)
@@ -17,14 +18,14 @@ def index():
        Type = data.get('Type')
        link = data.get('link')
        print(link)
-       if "ak.sv" in link:
+       if Type == "akwam":
            akwam = ak()
            data = akwam.getDLL(link)
-       # elif "wecima" in link:
-       else:
+       elif Type == "wecima":
             data = wecimascraper(link)
-       # elif "egyrbyeteuh" or "egydead" in link:
-       #     data = egydead_download(link)
+       elif Type == "arabseed":
+            data = arabseed_download(link)
+
        return jsonify(data)
    return 'Hello from Flask!'
 
@@ -51,6 +52,8 @@ def search():
             data = akwam.akwamsearch(text)
         elif type=="wecima":
             data = wecimasearch(text)
+        elif type=="arabseed":
+            data = searcharab(text)
         print(data)
         return jsonify(data)
     return 'Hello from Flask!'
