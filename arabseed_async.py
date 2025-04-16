@@ -21,7 +21,8 @@ def searcharab(search_term,catagory="series"):
 
     return combo
 
-async def arabseed_ep(url):
+# automatically finds second best quality if hightest quality not available
+async def arabseed_ep(url,quality=0): #quality 0=highest 1=second highest
     async with aiohttp.ClientSession() as s:
         async with s.get(url) as r:
             soup = BeautifulSoup(await r.text(),"html.parser")
@@ -31,8 +32,8 @@ async def arabseed_ep(url):
             }
             async with s.get(downloadep,headers=headers) as r1:
                 soup = BeautifulSoup(await r1.text(),"html.parser")
-                # arabseedservers = soup.find_all("a",class_="downloadsLink HoverBefore ArabSeedServer")
-                HQserver = soup.find("a",class_="downloadsLink HoverBefore ArabSeedServer").get("href")
+                arabseedservers = soup.find_all("a",class_="downloadsLink HoverBefore ArabSeedServer")
+                HQserver = arabseedservers[quality].get("href")
                 headers = {
                 "referer":downloadep,
                 }   
@@ -42,9 +43,15 @@ async def arabseed_ep(url):
                     async with s.get(link[0]) as r2_5:
                         soup = BeautifulSoup(await r2_5.text(),"html.parser")
                         next= soup.find("a",class_="downloadbtn").get("href")
-                        async with s.get(next) as r3:
+                        async with s.get(next,headers=headers) as r3:
                             soup = BeautifulSoup(await r3.text(),"html.parser")
-                            directDownloadLink= soup.find("a",class_="downloadbtn").get("href")
+                            try:
+                                directDownloadLink= soup.find("a",class_="downloadbtn").get("href")
+                            except:
+                                if (quality+1) < len(arabseedservers):
+                                    return await arabseed_ep(url,quality+1)
+                                else:
+                                    return ["invalid","No Links Available"]
                             return [directDownloadLink,directDownloadLink.split("/")[-1]]
 
 
@@ -60,4 +67,3 @@ async def arabseed_async(url):
 
 def arabseed_download(url):
     return asyncio.run(arabseed_async(url))
-
