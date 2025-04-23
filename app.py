@@ -1,11 +1,11 @@
 from sanic import Sanic
-from sanic.response import json
+from sanic.response import json,text
 from asyncakwam import akwamscrape as ak
 from scrapewecima import wecimatitle, wecimaimage, wecimasearch, wecimaseasons
 from fasterwecima import wecimascraper
 from arabseed_async import arabseed_download, searcharab
 
-app = Sanic("SeasonDownloader")
+app = Sanic("MyHelloWorldApp")
 
 @app.route('/',methods = ["GET","POST"])
 async def index(request):
@@ -23,7 +23,7 @@ async def index(request):
             data = arabseed_download(link)
 
         return json(data)
-    return 'Hello from Flask!'
+    return text('Hello from Flask!')
 
 @app.route('/search/wecima',methods=['GET','POST'])
 async def searchwecima(request):
@@ -33,7 +33,7 @@ async def searchwecima(request):
         data = wecimaseasons(link)
         print(data)
         return json(data)
-    return 'Hello from Flask!'
+    return text('Hello from Flask!')
 
 
 @app.route('/search',methods=['GET','POST'])
@@ -52,5 +52,5 @@ async def search(request):
             data = searcharab(text)
         print(data)
         return json(data)
-    return 'Hello from Flask!'
+    return text('Hello from Flask!')
 
