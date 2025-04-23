@@ -8,7 +8,7 @@ from arabseed_async import arabseed_download, searcharab
 app = Sanic("SeasonDownloader")
 
 @app.route('/',methods = ["GET","POST"])
-def index(request):
+async def index(request):
     if request.method == 'POST':
         data = request.get_json()
         Type = data.get('Type')
@@ -26,7 +26,7 @@ def index(request):
     return 'Hello from Flask!'
 
 @app.route('/search/wecima',methods=['GET','POST'])
-def searchwecima(request):
+async def searchwecima(request):
     if request.method == 'POST':
         data = request.get_json()
         link = data.get('link')
@@ -37,7 +37,7 @@ def searchwecima(request):
 
 
 @app.route('/search',methods=['GET','POST'])
-def search(request):
+async def search(request):
     if request.method == 'POST':
         data = request.get_json()
         text = data.get('text')
