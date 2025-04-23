@@ -7,6 +7,7 @@ from fasterwecima import wecimascraper
 from arabseed_async import arabseed_download, searcharab
 
 app = Sanic("MyHelloWorldApp")
+app.config.CORS_ORIGINS = "https://stirring-pudding-627ee8.netlify.app/"
 Extend(app)
 
 @app.route('/',methods = ["GET","POST","HEAD"])
