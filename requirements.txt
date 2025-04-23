@@ -1,4 +1,4 @@
-sanic
+sanic[ext]
 requests_html
 gunicorn
 bs4
