@@ -7,7 +7,7 @@ from arabseed_async import arabseed_download, searcharab
 
 app = Sanic("MyHelloWorldApp")
 
-@app.route('/',methods = ["GET","POST"])
+@app.route('/',methods = ["GET","POST","HEAD"])
 async def index(request):
     if request.method == 'POST':
         data = request.get_json()
