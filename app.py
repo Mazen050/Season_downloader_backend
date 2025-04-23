@@ -1,13 +1,15 @@
 from sanic import Sanic
 from sanic.response import json,text
+from sanic_ext import Extend
 from asyncakwam import akwamscrape as ak
 from scrapewecima import wecimatitle, wecimaimage, wecimasearch, wecimaseasons
 from fasterwecima import wecimascraper
 from arabseed_async import arabseed_download, searcharab
 
 app = Sanic("MyHelloWorldApp")
+Extend(app)
 
-@app.route('/',methods = ["GET","POST","HEAD"])
+@app.route('/',methods = ["GET","POST"])
 async def index(request):
     if request.method == 'POST':
         data = request.get_json()
