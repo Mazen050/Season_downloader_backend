@@ -1,4 +1,4 @@
-Flask
+sanic
 requests_html
 gunicorn
 bs4
