@@ -13,7 +13,7 @@ Extend(app)
 @app.route('/',methods = ["GET","POST","HEAD"])
 async def index(request):
     if request.method == 'POST':
-        data = request.get_json()
+        data = request.json
         Type = data.get('Type')
         link = data.get('link')
         print(link)
