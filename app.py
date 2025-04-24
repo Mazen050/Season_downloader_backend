@@ -3,7 +3,7 @@ from sanic.response import json,text
 from sanic_ext import Extend
 from asyncakwam import akwamscrape as ak
 from scrapewecima import wecimatitle, wecimaimage, wecimasearch, wecimaseasons
-from fasterwecima import wecimascraper
+from fasterwecima import wecimascraper,wecimascraper_async
 from arabseed_async import arabseed_download, searcharab
 
 app = Sanic("MyHelloWorldApp")
@@ -21,7 +21,7 @@ async def index(request):
             akwam = ak()
             data = akwam.getDLL(link)
         elif Type == "wecima":
-            data = wecimascraper(link)
+            data = wecimascraper_async(link)
         elif Type == "arabseed":
             data = arabseed_download(link)
 
