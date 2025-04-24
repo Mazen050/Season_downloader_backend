@@ -21,7 +21,7 @@ async def index(request):
             akwam = ak()
             data = akwam.getDLL(link)
         elif Type == "wecima":
-            data = wecimascraper_async(link)
+            data = await wecimascraper_async(link)
         elif Type == "arabseed":
             data = arabseed_download(link)
 
