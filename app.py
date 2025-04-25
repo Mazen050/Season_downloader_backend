@@ -31,7 +31,7 @@ async def index(request):
 @app.route('/search/wecima',methods=['GET','POST'])
 async def searchwecima(request):
     if request.method == 'POST':
-        data = request.get_json()
+        data = request.json
         link = data.get('link')
         data = wecimaseasons(link)
         print(data)
@@ -42,7 +42,7 @@ async def searchwecima(request):
 @app.route('/search',methods=['GET','POST'])
 async def search(request):
     if request.method == 'POST':
-        data = request.get_json()
+        data = request.json
         text = data.get('text')
         type = data.get('Type')
         print(text)
